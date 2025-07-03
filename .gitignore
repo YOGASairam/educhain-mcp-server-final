@@ -1,0 +1,12 @@
+# Python environment and build artifacts
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.log
+.env
+.ipynb_checkpoints/
+.DS_Store
+# Keep models/.gguf/ to ensure the large model file is uploaded as required by the assignment.
+# If you later wish to exclude large model files, uncomment the line below.
+# models/.gguf/

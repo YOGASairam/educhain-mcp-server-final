@@ -1,0 +1,7 @@
+langchain
+langchain-community
+llama-cpp-python
+pydantic>=2.0
+educhain # Assuming you installed this via 'pip install -e .' earlier
+mcp[cli] # New MCP SDK
+httpx # New dependency
