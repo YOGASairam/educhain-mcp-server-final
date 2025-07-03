@@ -68,3 +68,109 @@ First, clone this project repository to your local machine:
 ```bash
 git clone [https://github.com/YOGASairam/claude_educhain_mcp_server.git](https://github.com/YOGASairam/claude_educhain_mcp_server.git)
 cd claude_educhain_mcp_server
+
+ ```
+### 2. Download the Local LLM
+
+Download the `Mistral-7B-Instruct-v0.2-Q4_K_M.gguf` model file, which is approximately 4.37 GB.
+* **Download Link: `https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/blob/main/mistral-7b-instruct-v0.2.Q4_K_M.gguf`
+Once downloaded, place this `.gguf` file into the `models/.gguf/` directory within your cloned project.
+Ensure the `MODEL_PATH` in `src/config.py correctly` points to this file
+
+### 3. Install EduChain Library
+
+The `educhain` library needs to be installed from its source for development purposes.
+
+Run the following commands to navigate to the source folder, install it in editable mode, and return to the project root:
+
+```bash
+cd educhain-main/educhain-main
+pip install -e .
+cd ../..
+```
+### 4. Install Project Dependencies
+
+Install all necessary Python packages. It’s recommended to do a clean install to avoid potential conflicts.
+
+```bash
+pip uninstall llama-cpp-python -y
+pip uninstall pandas -y  # Uninstall pandas to prevent numpy conflicts
+pip uninstall numpy -y   # Uninstall numpy to prevent version conflicts
+pip cache purge
+
+pip install numpy==1.26.4  # Install a compatible numpy version first
+pip install -r requirements.txt --force-reinstall --no-cache-dir
+```
+
+> ⚠️ **Note:** If `pip install -r requirements.txt` throws errors for `uvicorn[standard]`, try installing it separately:
+```bash
+pip install uvicorn
+```
+
+---
+
+### 5. Configure Claude Desktop
+
+Claude Desktop must be configured to connect to your MCP server.
+
+**Locate the configuration file:**
+
+```
+C:\Users\<YourUsername>\AppData\Roaming\Claude\claude_desktop_config.json
+```
+
+You can also access it via:
+- **Claude Desktop → Settings → Developer Tab → Edit Config**
+
+**Update the file content:**
+
+Replace the entire content with the following (update the `cwd` path to your actual project folder):
+
+```json
+{
+  "mcpServers": {
+    "educhain_server": {
+      "command": "python",
+      "args": [
+        "-m",
+        "src.mcp_server"
+      ],
+      "cwd": "C:\\Users\\SriHari\\OneDrive\\Desktop\\claude_educhain_mcp_server"
+    }
+  }
+}
+```
+
+Save and close the file.
+
+---
+
+### 6. Restart Claude Desktop
+
+Close Claude Desktop completely, then re-open it. This ensures the new configuration is loaded and your MCP server is recognized.
+
+---
+
+### 7. Test the Server with Claude Desktop
+
+Once restarted, Claude Desktop should automatically launch the MCP server as needed.
+
+Open a new chat and try the following commands:
+
+- `Generate 5 multiple-choice questions on Python loops.`
+- `Provide a lesson plan for teaching algebra.`
+- `Generate 3 flashcards on Calculus concepts.`
+
+> ✅ You may be prompted to allow tool execution — be sure to grant permission.
+
+---
+
+### 8. Access Server Logs
+
+Claude Desktop captures logs from your MCP server at the following path:
+
+```
+C:\Users\<YourUsername>\AppData\Local\Temp\Claude\mcp-server-educhain_server.log
+```
+
+This file contains all logs from `src/mcp_server.py`, including `print()` and debug messages.
