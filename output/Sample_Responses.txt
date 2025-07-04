@@ -1,0 +1,63 @@
+# Command 1: Generate 5 multiple-choice questions on Python loops.
+
+Python Loops Quiz
+Question 1
+What will be the output of the following code?
+pythonfor i in range(3):
+    print(i)
+A) 0 1 2
+B) 1 2 3
+C) 0
+1
+2
+D) 1
+2
+3
+Answer: C
+
+Question 2
+Which of the following statements about while loops is correct?
+A) A while loop always executes at least once
+B) A while loop continues as long as the condition is True
+C) A while loop cannot use the break statement
+D) A while loop is faster than a for loop in all cases
+Answer: B
+
+Question 3
+What will happen when this code runs?
+pythonnumbers = [1, 2, 3, 4, 5]
+for num in numbers:
+    if num == 3:
+        continue
+    print(num)
+A) Prints: 1 2 4 5
+B) Prints: 1 2 3 4 5
+C) Prints: 3
+D) Raises an error
+Answer: A
+
+Question 4
+Which loop construct is most appropriate for iterating over the characters in a string?
+A) while loop with an index counter
+B) for loop with range(len(string))
+C) for char in string:
+D) All of the above work equally well
+Answer: C
+
+Question 5
+What does the else clause do in a for loop?
+pythonfor i in range(5):
+    if i == 10:
+        break
+    print(i)
+else:
+    print("Loop completed")
+A) Executes only if the loop encounters a break statement
+B) Executes only if the loop completes without encountering a break statement
+C) Always executes after the loop, regardless of how it ends
+D) Never executes because it's invalid syntax
+Answer: B
+
+---
+
+# Command 2: Provide a lesson plan for teaching algebra.
